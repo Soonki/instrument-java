@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:component-scan base-package="com.demo.sales">
+        <context:include-filter type="annotation" expression="javax.ws.rs.ext.Provider"/>
+    </context:component-scan>
+
+    <!-- swagger -->
+    <bean id="apiListingResourceJSON" class="io.swagger.jaxrs.listing.ApiListingResource"/>
+    <bean id="apiDeclarationProvider" class="io.swagger.jaxrs.listing.SwaggerSerializers"/>
+    <bean id="beanConfig" class="com.demo.sales.swagger.JaxbEnabledBeanConfig">
+        <property name="title" value="swagger sample"/>
+        <property name="version" value="1.0.0"/>
+        <property name="schemes" value="http"/>
+        <property name="host" value="localhost:8080"/>
+        <property name="basePath" value="/resteasy-polymorphism-swagger-dozer"/>
+        <property name="resourcePackage" value="io.swagger.resources,com.demo.sales"/>
+        <property name="scan" value="true"/>
+    </bean>
+
+    <!-- dozer -->
+    <bean id="org.dozer.Mapper" class="org.dozer.DozerBeanMapper">
+        <property name="mappingFiles">
+            <list>
+                <value>dozer-bean-v3-to-v4-mappings.xml</value>
+            </list>
+        </property>
+    </bean>
+</beans>

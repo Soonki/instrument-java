@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+    <configuration>
+        <stop-on-errors>true</stop-on-errors>
+        <date-format>MM/dd/yyyy HH:mm</date-format>
+        <wildcard>true</wildcard>
+    </configuration>
+    <mapping>
+        <class-a>com.demo.sales.schemas.v3.ServiceResponse</class-a>
+        <class-b>com.demo.sales.schemas.v4.ServiceResponse</class-b>
+        <field>
+            <a>models</a>
+            <b>models</b>
+            <a-hint>
+                com.demo.sales.schemas.v3.OrderModel,
+                com.demo.sales.schemas.v3.CustomerModel
+            </a-hint>
+            <b-hint>
+                com.demo.sales.schemas.v4.OrderModel,
+                com.demo.sales.schemas.v4.CustomerModel
+            </b-hint>
+        </field>
+    </mapping>
+    <mapping>
+        <class-a>com.demo.sales.schemas.v3.OrderModel</class-a>
+        <class-b>com.demo.sales.schemas.v4.OrderModel</class-b>
+        <field>
+            <a>name</a>
+            <b>lastName</b>
+        </field>
+    </mapping>
+</mappings>
